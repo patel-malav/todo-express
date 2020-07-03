@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"description": "todo backend",
 	"type": "module",
+	"main": "server.js",
 	"scripts": {
 		"start": "node -r dotenv/config server.js"
 	},

@@ -1,0 +1,68 @@
+@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZmM2NGY5NzgyOGEyNTVlMTYzMzYzOCIsIm5hbWUiOiJtYWxhdiIsImlhdCI6MTU5MzYxODEwOH0._s91GQZfYple3GDWcFwqsi0_OwEyG_T59r6Y4zy5_Kc
+
+POST http://localhost:6969/auth/register
+Content-Type: application/json
+
+{
+    "name": "malav",
+    "email": "patelmalav@protonmail.me",
+    "password": "malavpatel"
+}
+
+###
+
+POST http://localhost:6969/auth/login
+Content-Type: application/json
+
+{
+    "email": "patelmalav@protonmail.me",
+    "password": "malavpatel"
+}
+
+###
+
+GET http://localhost:6969/todos
+Authorization: Bearer {{jwtToken}}
+
+###
+
+GET http://localhost:6969/todos/174
+Authorization: Bearer {{jwtToken}}
+
+###
+
+POST http://localhost:6969/todos
+Authorization: Bearer {{jwtToken}}
+Content-Type: application/json
+
+[
+    {
+        "name": "fuck list",
+        "task": [
+            {
+                "title": "parinda",
+                "completed": true
+            }
+        ]
+    }
+]
+
+###
+
+PUT http://localhost:6969/todos/555
+Authorization: Bearer {{jwtToken}}
+Content-Type: application/json
+
+{
+    "name": "fuck list",
+    "task": [
+        {
+            "title": "parinda",
+            "completed": true
+        }
+    ]
+}
+###
+
+DELETE  http://localhost:6969/todos/10229
+Authorization: Bearer {{jwtToken}}

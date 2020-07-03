@@ -1,0 +1,22 @@
+{
+	"name": "todo-express",
+	"version": "0.0.1",
+	"description": "todo backend",
+	"type": "module",
+	"scripts": {
+		"start": "node -r dotenv/config server.js"
+	},
+	"author": "patel-malav",
+	"license": "MIT",
+	"dependencies": {
+		"bcrypt": "^5.0.0",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-jwt": "^6.0.0",
+		"jsonwebtoken": "^8.5.1",
+		"lodash": "^4.17.15",
+		"mongoose": "^5.9.20",
+		"passport": "^0.4.1",
+		"validator": "^13.1.1"
+	}
+}

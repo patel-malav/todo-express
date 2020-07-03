@@ -8,19 +8,23 @@ const router = express.Router();
 
 router.route('/login').post(async (req, res) => {
 	try {
-		const { errors, isValid, user } = await validate.login(req.body);
+		const {
+			errors,
+			isValid,
+			user: { id, email, name },
+		} = await validate.login(req.body);
 		if (!isValid) return res.status(400).json(errors);
 
-		const payload = { id: user.id, name: user.name };
+		const payload = { id, name };
 		const token = new Promise((resolve, reject) =>
 			jwt.sign(
 				payload,
 				process.env.SECRET,
-				// { expiresIn: 3600 },
+				{ expiresIn: 86400 },
 				(error, token) => (error ? reject(error) : resolve(token))
 			)
 		);
-		res.json({ ...user.toJSON(), token: await token });
+		return res.json({ token: await token });
 	} catch (error) {
 		console.log(error);
 		return res.send(500).json({ error: 'Internal Server Error' });
@@ -41,12 +45,14 @@ router.route('/register').post(async (req, res) => {
 			password: await bcrypt.hash(req.body.password, 10),
 		});
 		const savedUser = await user.save();
-
-		// Respond with saved data
-		res.json(savedUser);
+		if (savedUser._id) {
+			return res.json({ ok: 'registered' });
+		} else {
+			throw 'Database Error';
+		}
 	} catch (error) {
 		console.log(error);
-		res.status(500).json({ error: 'Internal Server Error' });
+		return res.status(500).json({ error: 'Internal Server Error' });
 	}
 });
 

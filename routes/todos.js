@@ -108,7 +108,7 @@ todos
 		);
 		Object.assign(task, req.body);
 		const updatedTodo = await selectedTodo.save();
-		res.json(updatedTodo);
+		res.json(updatedTodo.tasks);
 	})
 	.delete(async (req, res) => {
 		const updatedTodo = await Todo.findByIdAndUpdate(
@@ -120,7 +120,7 @@ todos
 		)
 			.select('tasks')
 			.exec();
-		return res.json(updatedTodo);
+		return res.json(updatedTodo.tasks);
 	})
 	.all((req, _res) => {
 		throw new MethodNotSupportedError(req.method, req.originalUrl);

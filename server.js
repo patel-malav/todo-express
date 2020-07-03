@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import auth from './routes/auth.js';
 import todos from './routes/todos.js';
 import { NotFoundError } from './errors.js';
@@ -24,6 +25,7 @@ const port = process.env.PORT || 6969;
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 app.use('/auth', auth);
 app.use('/todos', todos);
 

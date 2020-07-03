@@ -17,6 +17,14 @@ const taskSchema = new mongoose.Schema(
 	{ timestamps: true }
 );
 
+taskSchema.set('toJSON', {
+	virtuals: true,
+	versionKey: false,
+	transform: (_doc, ret) => {
+		delete ret._id;
+	},
+});
+
 const todoSchema = new mongoose.Schema(
 	{
 		user: {
@@ -37,5 +45,13 @@ const todoSchema = new mongoose.Schema(
 	},
 	{ timestamps: true }
 );
+
+todoSchema.set('toJSON', {
+	virtuals: true,
+	versionKey: false,
+	transform: (_doc, ret) => {
+		delete ret._id;
+	},
+});
 
 export default mongoose.model('Todo', todoSchema);

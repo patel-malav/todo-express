@@ -1,6 +1,9 @@
 # todo-express
 Todo API with Express Backend
 
+# Heroku End Point - https://patelmalav-todo-express.herokuapp.com/
+# Will Connect Netlify App - https://patelmalav-todo-angular.netlify.app/
+
 ## Todo Endpoints
 1. /todos - GET, POST
 2. /todos/:todoId - GET, PUT, DELETE

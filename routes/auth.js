@@ -8,13 +8,10 @@ const router = express.Router();
 
 router.route('/login').post(async (req, res) => {
 	try {
-		const {
-			errors,
-			isValid,
-			user: { id, email, name },
-		} = await validate.login(req.body);
+		const { errors, isValid, user } = await validate.login(req.body);
 		if (!isValid) return res.status(400).json(errors);
 
+		const { id, name } = user;
 		const payload = { id, name };
 		const token = new Promise((resolve, reject) =>
 			jwt.sign(

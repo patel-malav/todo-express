@@ -9,6 +9,8 @@ const taskSchema = new mongoose.Schema(
 			maxlength: 50,
 			lowercase: true,
 		},
+		time: Date,
+		descp: String,
 		completed: {
 			type: Boolean,
 			default: false,

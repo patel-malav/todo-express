@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import morgan from 'morgan';
 import auth from './routes/auth.js';
 import todos from './routes/todos.js';
 import { NotFoundError } from './errors.js';
@@ -25,7 +26,22 @@ const port = process.env.PORT || 6969;
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+if (process.env.NETLIFY) {
+	app.use(
+		cors({
+			origin: process.env.NETLIFY,
+			optionsSuccessStatus: 200,
+		})
+	);
+} else {
+	app.use(cors());
+	app.use(
+		morgan(
+			':method :remote-addr :url :status :res[content-length] - :response-time ms'
+		)
+	);
+}
+
 app.use('/auth', auth);
 app.use('/todos', todos);
 

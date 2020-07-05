@@ -1,4 +1,4 @@
-@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZmM2NGY5NzgyOGEyNTVlMTYzMzYzOCIsIm5hbWUiOiJtYWxhdiIsImlhdCI6MTU5MzYxODEwOH0._s91GQZfYple3GDWcFwqsi0_OwEyG_T59r6Y4zy5_Kc
+@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZmVmM2NmZjY2YTdlNDQ1NWU2NGI1YyIsIm5hbWUiOiJtYWxhdiIsImlhdCI6MTU5MzkzMTYwOCwiZXhwIjoxNTk0MDE4MDA4fQ.gNu4wBzaKubCrz0ygUj0PnnVFmXKkQjpmE-AbT6Thdo
 
 POST http://localhost:6969/auth/register
 Content-Type: application/json
@@ -15,7 +15,7 @@ POST http://localhost:6969/auth/login
 Content-Type: application/json
 
 {
-    "email": "patelmalav@protonmail.me",
+    "email": "patelmalav64@gmail.com",
     "password": "malavpatel"
 }
 
